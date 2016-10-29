@@ -104,12 +104,12 @@
 		4401AE521DC5368900D8E7A7 /* SuperGranny */ = {
 			isa = PBXGroup;
 			children = (
-				4401AE8B1DC5370000D8E7A7 /* IHATCS__.TTF */,
 				4401AE531DC5368900D8E7A7 /* AppDelegate.swift */,
 				4401AE891DC536F700D8E7A7 /* GameOverScene.swift */,
 				4401AE591DC5368900D8E7A7 /* GameScene.swift */,
 				4401AE871DC536A400D8E7A7 /* TitleScene.swift */,
 				4401AE5B1DC5368900D8E7A7 /* GameViewController.swift */,
+				4401AE8B1DC5370000D8E7A7 /* IHATCS__.TTF */,
 				4401AE5D1DC5368900D8E7A7 /* Main.storyboard */,
 				4401AE601DC5368900D8E7A7 /* Assets.xcassets */,
 				4401AE621DC5368900D8E7A7 /* LaunchScreen.storyboard */,

@@ -28,11 +28,10 @@ class TitleScene: SKScene {
         
         // init Label
         
-        buttonLabel = SKLabelNode(fontNamed: "IHATCS__")
-        
+        self.buttonLabel = SKLabelNode(fontNamed: "Courier")
         if let buttonLabel = self.buttonLabel?.copy() as! SKLabelNode? {
             
-            buttonLabel.position = CGPoint(x: self.frame.width / 2, y: 300)
+            buttonLabel.position = CGPoint(x: self.frame.width / 2, y: 290)
             buttonLabel.text = "PLAY"
             
             addChild(buttonLabel);
