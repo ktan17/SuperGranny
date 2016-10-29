@@ -56,7 +56,7 @@ class GameViewController: UIViewController {
      override func viewDidLoad() {
      super.viewDidLoad()
      
-     let scene = GameOverScene(size: self.view.frame.size)
+     let scene = GameOverScene(size: self.view.frame.size, won:true)
      
      if let view = self.view as! SKView? {
      
