@@ -12,8 +12,19 @@ class TitleScene: SKScene {
     
     private var playButton : SKSpriteNode?
     private var buttonLabel : SKLabelNode?
+    private var BG : SKSpriteNode?
     
     override func didMove(to view: SKView) {
+        
+        // init BG
+        
+        self.BG = SKSpriteNode (imageNamed: "TitleBG")
+        if let BG = self.BG?.copy() as! SKSpriteNode? {
+            
+            BG.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+            addChild(BG)
+            
+        }
         
         // init playButton
         
