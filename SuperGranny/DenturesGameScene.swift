@@ -25,7 +25,27 @@ class DenturesGameScene: SKScene {
 
         let denture = SKSpriteNode(imageNamed: "denture")
          denture.name = "Dentures"
-        denture.position = CGPoint(x: 365, y: 130);
+        var randomVar=Int(arc4random_uniform(5) + 1);
+        switch randomVar {
+        case 1:
+            denture.position = CGPoint(x: 365, y: 130);
+            break;
+        case 2:
+            denture.position = CGPoint(x: 142, y: 247);
+            break;
+        case 3:
+            denture.position = CGPoint(x: 10, y: 344);
+            break;
+        case 4:
+            denture.position = CGPoint(x: 343, y: 465);
+            break;
+        case 5:
+            denture.position = CGPoint(x: 121, y: 1054);
+            break;
+        default:
+            print("error");
+        }
+        
          denture.isUserInteractionEnabled = false
          func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
          let touch:UITouch = touches.anyObject()! as! UITouch
