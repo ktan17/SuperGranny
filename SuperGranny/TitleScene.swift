@@ -123,13 +123,24 @@ class TitleScene: SKScene {
         
     }
     
-    func printButtonsName(name: String?) {
-        
-        if let buttonName = name {
-            print("Pressed button : \(buttonName) ")
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)           // 1
+            
+            if let button = atPoint(location) as? SKSpriteNode {        // 2
+                
+                if button.name == "playButton" {
+                    
+                    let scene = DenturesGameScene(size: (self.view?.frame.size)!)
+                    let transition = SKTransition.reveal(with: SKTransitionDirection.down, duration: 1.0)
+                    
+                    scene.scaleMode = .aspectFill
+                    
+                    self.view?.presentScene(scene, transition: transition)
+                    
+                }
+            }
         }
-        
-        //Use switch here to take appropriate actions based on button's name (if you like)
     }
     
     override func update(_ currentTime: TimeInterval) {
