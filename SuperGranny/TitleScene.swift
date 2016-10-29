@@ -11,8 +11,10 @@ import GameplayKit
 class TitleScene: SKScene {
     
     private var playButton : SKSpriteNode?
-    private var buttonLabel : SKLabelNode?
     private var BG : SKSpriteNode?
+    private var lblTitle : SKSpriteNode?
+
+    private var buttonLabel : SKLabelNode?
     
     override func didMove(to view: SKView) {
         
@@ -23,6 +25,23 @@ class TitleScene: SKScene {
             
             BG.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
             addChild(BG)
+            
+        }
+        
+        // init lblTitle
+        
+        self.lblTitle = SKSpriteNode (imageNamed: "TitleLabel")
+        if let lblTitle = self.lblTitle?.copy() as! SKSpriteNode? {
+            
+            lblTitle.size = CGSize(width: lblTitle.size.width / 2, height: lblTitle.size.height / 2)
+            lblTitle.position = CGPoint(x: self.size.width / 2, y: 520)
+            addChild(lblTitle)
+            
+            let pulseUp = SKAction.scale(to: 1.1, duration: 1.0)
+            let pulseDown = SKAction.scale(to: 0.9, duration: 1.0)
+            let pulse = SKAction.sequence([pulseUp, pulseDown])
+            
+            lblTitle.run(SKAction.repeatForever(pulse))
             
         }
         
