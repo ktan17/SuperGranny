@@ -11,13 +11,15 @@ import GameplayKit
 class ChildrenGameScene: SKScene {
     
     private var Granny : SKSpriteNode?
+    private var Rock : SKShapeNode?
+    
     private var buttonLabel : SKLabelNode?
     
     override func didMove(to view: SKView) {
         
         // init playButton
         
-        self.Granny = SKSpriteNode (imageNamed: "Granny")
+        self.Granny = SKSpriteNode (imageNamed: "denture")
         if let Granny = self.Granny?.copy() as! SKSpriteNode? {
             
             Granny.position = CGPoint(x: self.frame.width / 2, y: 600)
@@ -37,11 +39,22 @@ class ChildrenGameScene: SKScene {
             
         }
         
+        self.Rock = SKShapeNode.init(rectOf: CGSize.init(width: 10, height: 10))
+        
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
         
+        
+        if let n = self.Rock?.copy() as! SKShapeNode? {
+            n.position = CGPoint(x: self.frame.width / 2, y: 700)
+            n.strokeColor = SKColor.green
+            self.addChild(n)
+            
+            n.run(SKAction.move(to: CGPoint(x: self.frame.width / 2, y: 0), duration: 4))
+            
+        }
     }
     
     func touchMoved(toPoint pos : CGPoint) {
