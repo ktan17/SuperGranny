@@ -11,7 +11,7 @@ import GameplayKit
 class TitleScene: SKScene {
     
     private var playButton : SKSpriteNode?
-    private var label : SKLabelNode?
+    private var buttonLabel : SKLabelNode?
     
     override func didMove(to view: SKView) {
         
@@ -28,7 +28,16 @@ class TitleScene: SKScene {
         
         // init Label
         
+        buttonLabel = SKLabelNode(fontNamed: "IHATCS__")
         
+        if let buttonLabel = self.buttonLabel?.copy() as! SKLabelNode? {
+            
+            buttonLabel.position = CGPoint(x: self.frame.width / 2, y: 300)
+            buttonLabel.text = "PLAY"
+            
+            addChild(buttonLabel);
+            
+        }
         
     }
     
