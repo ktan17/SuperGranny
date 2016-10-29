@@ -19,10 +19,11 @@ class ChildrenGameScene: SKScene {
         
         // init playButton
         
-        self.Granny = SKSpriteNode (imageNamed: "denture")
+        self.Granny = SKSpriteNode (imageNamed: "grannySprite")
         if let Granny = self.Granny?.copy() as! SKSpriteNode? {
             
-            Granny.position = CGPoint(x: self.frame.width / 2, y: 600)
+            Granny.size = CGSize(width: Granny.size.width / 2, height: Granny.size.height / 2)
+            Granny.position = CGPoint(x: self.frame.width / 2, y: 550)
             addChild(Granny)
             
         }
@@ -44,8 +45,7 @@ class ChildrenGameScene: SKScene {
     }
     
     
-    func touchDown(atPoint pos : CGPoint) {
-        
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if let n = self.Rock?.copy() as! SKShapeNode? {
             n.position = CGPoint(x: self.frame.width / 2, y: 700)

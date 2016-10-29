@@ -32,7 +32,13 @@ class TouchableSpriteNode : SKSpriteNode
 
 class DenturesGameScene: SKScene {
     
+    
+    
     private var BGD : SKSpriteNode?
+    
+    let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+    
+    
     
     override func didMove(to view: SKView) {
         
@@ -40,13 +46,29 @@ class DenturesGameScene: SKScene {
         
         
         
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+        
         
         label.center = CGPoint(x: 160, y: 285)
         
         label.textAlignment = .center
         
         label.text = "Find the dentures!"
+        
+        self.label.font = UIFont(name: "HelveticaNeue", size: 20)
+        
+        //self.label.alpha = 0;
+        
+        self.label.alpha = 1
+        
+        UIView.animate(withDuration: 0.7, delay: 0.0, options: [.repeat, .autoreverse, .curveEaseInOut], animations:
+            
+            {
+                
+                self.label.alpha = 0
+                
+        }, completion: nil)
+        
+        
         
         self.view?.addSubview(label)
         
@@ -82,31 +104,31 @@ class DenturesGameScene: SKScene {
             
         case 1:
             
-            denture.position = CGPoint(x: 365, y: 130);
+            denture.position = CGPoint(x: 365, y: 1081-130);
             
             break;
             
         case 2:
             
-            denture.position = CGPoint(x: 142, y: 247);
+            denture.position = CGPoint(x: 142, y: 1081-247);
             
             break;
             
         case 3:
             
-            denture.position = CGPoint(x: 10, y: 344);
+            denture.position = CGPoint(x: 10, y: 1081-344);
             
             break;
             
         case 4:
             
-            denture.position = CGPoint(x: 343, y: 465);
+            denture.position = CGPoint(x: 343, y: 1081-465);
             
             break;
             
         case 5:
             
-            denture.position = CGPoint(x: 121, y: 1054);
+            denture.position = CGPoint(x: 121, y: 1081-1054);
             
             break;
             
@@ -120,11 +142,50 @@ class DenturesGameScene: SKScene {
         
         
         
+        
+        
         denture.isUserInteractionEnabled = false
         
         
         
         addChild(denture)
+        
+        func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+            
+            
+            
+            for touch in touches {
+                
+                
+                
+                let location = touch.location(in: self)
+                
+                let nodes = self.nodes(at: location)
+                
+                
+                
+                for node in nodes
+                    
+                {
+                    
+                    if (node.name=="Dentures")
+                        
+                    {
+                        
+                        NSLog("Touch a SKNodeDerivedNode")
+                        
+                        break
+                        
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+        
         
         
         

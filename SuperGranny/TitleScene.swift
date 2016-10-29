@@ -8,12 +8,41 @@
 import SpriteKit
 import GameplayKit
 
+/*protocol ButtonDelegate:class {
+    
+    func printButtonsName(name:String?)
+    
+}
+
+class Button : SKSpriteNode{
+    
+    weak var delegate:ButtonDelegate?
+    
+    init(name:String){
+        super.init(texture: nil, color: .purple, size: CGSize(width: 50, height: 50))
+        self.name = name
+        self.isUserInteractionEnabled = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        delegate?.printButtonsName(name: self.name)
+        
+    }
+} */
+
 class TitleScene: SKScene {
     
     private var playButton : SKSpriteNode?
     private var BG : SKSpriteNode?
     private var lblTitle : SKSpriteNode?
-
+    private var Granny : SKSpriteNode?
+    
     private var buttonLabel : SKLabelNode?
     
     override func didMove(to view: SKView) {
@@ -25,6 +54,17 @@ class TitleScene: SKScene {
             
             BG.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
             addChild(BG)
+            
+        }
+        
+        // init Granny
+        
+        self.Granny = SKSpriteNode (imageNamed: "grannySprite")
+        if let Granny = self.Granny?.copy() as! SKSpriteNode? {
+            
+            Granny.size = CGSize(width: Granny.size.width / 2, height: Granny.size.height / 2)
+            Granny.position = CGPoint(x: 100, y: 120)
+            addChild(Granny)
             
         }
         
@@ -50,6 +90,7 @@ class TitleScene: SKScene {
         self.playButton = SKSpriteNode (imageNamed: "Button BG")
         if let playButton = self.playButton?.copy() as! SKSpriteNode? {
             
+            playButton.name = "playButton"
             playButton.size = CGSize.init(width: playButton.size.width * 1.25, height: playButton.size.height * 1.25)
             playButton.position = CGPoint(x: self.frame.width / 2, y: 300)
             addChild(playButton)
@@ -70,7 +111,6 @@ class TitleScene: SKScene {
         
     }
     
-    
     func touchDown(atPoint pos : CGPoint) {
         
     }
@@ -81,6 +121,15 @@ class TitleScene: SKScene {
     
     func touchUp(atPoint pos : CGPoint) {
         
+    }
+    
+    func printButtonsName(name: String?) {
+        
+        if let buttonName = name {
+            print("Pressed button : \(buttonName) ")
+        }
+        
+        //Use switch here to take appropriate actions based on button's name (if you like)
     }
     
     override func update(_ currentTime: TimeInterval) {
