@@ -10,19 +10,18 @@ import GameplayKit
 
 class ChildrenGameScene: SKScene {
     
-    private var playButton : SKSpriteNode?
+    private var Granny : SKSpriteNode?
     private var buttonLabel : SKLabelNode?
     
     override func didMove(to view: SKView) {
         
         // init playButton
         
-        self.playButton = SKSpriteNode (imageNamed: "Button BG")
-        if let playButton = self.playButton?.copy() as! SKSpriteNode? {
+        self.Granny = SKSpriteNode (imageNamed: "Granny")
+        if let Granny = self.Granny?.copy() as! SKSpriteNode? {
             
-            playButton.size = CGSize.init(width: playButton.size.width * 1.25, height: playButton.size.height * 1.25)
-            playButton.position = CGPoint(x: self.frame.width / 2, y: 300)
-            addChild(playButton)
+            Granny.position = CGPoint(x: self.frame.width / 2, y: 600)
+            addChild(Granny)
             
         }
         

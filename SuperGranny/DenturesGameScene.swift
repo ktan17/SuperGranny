@@ -18,6 +18,7 @@ class DenturesGameScene: SKScene {
         self.BGD = SKSpriteNode (imageNamed: "denturegamebg")
         if let BGD = self.BGD?.copy() as! SKSpriteNode? {
             
+            BGD.size = CGSize(width: self.frame.width, height: self.frame.height)
             BGD.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
             addChild(BGD)
             
@@ -47,6 +48,9 @@ class DenturesGameScene: SKScene {
         }
         
          denture.isUserInteractionEnabled = false
+        
+        addChild(denture)
+        
          func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
          let touch:UITouch = touches.anyObject()! as! UITouch
          let positionInScene = touch.location(in: self)
