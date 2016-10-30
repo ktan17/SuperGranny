@@ -12,9 +12,7 @@ class ChildrenGameScene: SKScene {
     
     private var BG : SKSpriteNode?
     private var Granny : SKSpriteNode?
-    private var Rock : SKShapeNode?
-    
-    private var buttonLabel : SKLabelNode?
+    private var Cookie : SKSpriteNode?
     
     override func didMove(to view: SKView) {
         
@@ -40,32 +38,25 @@ class ChildrenGameScene: SKScene {
             
         }
         
-        // init Label
-        
-        self.buttonLabel = SKLabelNode(fontNamed: "Courier")
-        if let buttonLabel = self.buttonLabel?.copy() as! SKLabelNode? {
+        self.Cookie = SKSpriteNode(imageNamed: "cookieSmall")
+        if let Cookie = self.Cookie {
             
-            buttonLabel.position = CGPoint(x: self.frame.width / 2, y: 290)
-            buttonLabel.text = "PLAY"
-            
-            addChild(buttonLabel);
+            Cookie.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(M_PI), duration: 1)))
             
         }
-        
-        self.Rock = SKShapeNode.init(rectOf: CGSize.init(width: 10, height: 10))
         
     }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if let n = self.Rock?.copy() as! SKShapeNode? {
+        if let n = self.Cookie?.copy() as! SKSpriteNode? {
+            n.size = CGSize(width: 15, height: 15)
             n.position = CGPoint(x: self.frame.width / 2, y: 550)
-            n.strokeColor = SKColor.green
             n.zPosition = 100
             self.addChild(n)
             
-            n.run(SKAction.move(to: CGPoint(x: self.frame.width / 2, y: 0), duration: 4))
+            n.run(SKAction.sequence([SKAction.move(to: CGPoint(x: self.frame.width / 2, y: 0), duration: 4), SKAction.removeFromParent()]))
             
         }
     }
