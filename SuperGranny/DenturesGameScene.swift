@@ -34,8 +34,6 @@ class DenturesGameScene: SKScene {
             
             let location = touch.location(in: self)           // 1
             
-            
-            
             if let button = atPoint(location) as? SKSpriteNode {        // 2
                 
                 
@@ -127,40 +125,43 @@ class DenturesGameScene: SKScene {
         
         
         let denture = SKSpriteNode(imageNamed: "denture")
+        denture.size=CGSize(width: denture.size.width/2.3, height: denture.size.height/2.3)
         
         denture.name = "denture"
         
         let randomVar=Int(arc4random_uniform(5) + 1);
+        //let randomVar=3
+        print(randomVar)
         
         switch (randomVar) {
             
         case 1:
             
-            denture.position = CGPoint(x: 362, y: (1081-130));
+            denture.position = CGPoint(x: 230, y: 583);
             
             break;
             
         case 2:
             
-            denture.position = CGPoint(x: 142, y: (1081-247));
+            denture.position = CGPoint(x: 92, y: 516);
             
             break;
             
         case 3:
             
-            denture.position = CGPoint(x: 10, y: (1081-344));
+            denture.position = CGPoint(x: 13, y: 454);
             
             break;
             
         case 4:
             
-            denture.position = CGPoint(x: 343, y: (1081-465));
+            denture.position = CGPoint(x: 210, y: 380);
             
             break;
             
         case 5:
             
-            denture.position = CGPoint(x: 121, y: (1081-1054));
+            denture.position = CGPoint(x: 74, y: 15);
             
             break;
             

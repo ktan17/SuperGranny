@@ -53,6 +53,7 @@ class TitleScene: SKScene {
         if let BG = self.BG?.copy() as! SKSpriteNode? {
             
             BG.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+            BG.zPosition = 0
             addChild(BG)
             
         }
@@ -64,6 +65,7 @@ class TitleScene: SKScene {
             
             Granny.size = CGSize(width: Granny.size.width / 2, height: Granny.size.height / 2)
             Granny.position = CGPoint(x: 100, y: 120)
+            Granny.zPosition = 10
             addChild(Granny)
             
         }
@@ -75,6 +77,7 @@ class TitleScene: SKScene {
             
             lblTitle.size = CGSize(width: lblTitle.size.width / 2, height: lblTitle.size.height / 2)
             lblTitle.position = CGPoint(x: self.size.width / 2, y: 520)
+            lblTitle.zPosition = 15
             addChild(lblTitle)
             
             let pulseUp = SKAction.scale(to: 1.1, duration: 1.0)
@@ -93,6 +96,7 @@ class TitleScene: SKScene {
             playButton.name = "playButton"
             playButton.size = CGSize.init(width: playButton.size.width * 1.25, height: playButton.size.height * 1.25)
             playButton.position = CGPoint(x: self.frame.width / 2, y: 300)
+            playButton.zPosition = 20
             addChild(playButton)
             
         }
@@ -103,6 +107,7 @@ class TitleScene: SKScene {
         if let buttonLabel = self.buttonLabel?.copy() as! SKLabelNode? {
             
             buttonLabel.position = CGPoint(x: self.frame.width / 2, y: 290)
+            buttonLabel.zPosition = 30
             buttonLabel.text = "PLAY"
             
             addChild(buttonLabel);

@@ -23,6 +23,7 @@ class ChildrenGameScene: SKScene {
             
             BG.size = CGSize(width: self.frame.width, height: self.frame.height)
             BG.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+            BG.zPosition = 0
             addChild(BG)
             
         }
@@ -34,6 +35,7 @@ class ChildrenGameScene: SKScene {
             
             Granny.size = CGSize(width: Granny.size.width / 2, height: Granny.size.height / 2)
             Granny.position = CGPoint(x: self.frame.width / 2, y: 550)
+            Granny.zPosition = 10
             addChild(Granny)
             
         }
