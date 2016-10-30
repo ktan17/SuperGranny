@@ -22,11 +22,9 @@ import SpriteKit
 
 class DenturesGameScene: SKScene {
     
-    
+    private var instructLabel : SKLabelNode?
     
     private var BGD : SKSpriteNode?
-    
-    let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -72,37 +70,19 @@ class DenturesGameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        
-        
-        
-        
-        
-        
-        label.center = CGPoint(x: 160, y: 900)
-        
-        label.textAlignment = .center
-        
-        label.text = "Find the dentures!"
-        
-        label.layer.zPosition = 100
-        
-        self.label.font = UIFont(name: "HelveticaNeue", size: 20)
-        
-        //self.label.alpha = 0;
-        
-        self.label.alpha = 1
-        
-        UIView.animate(withDuration: 0.7, delay: 0.0, options: [.repeat, .autoreverse, .curveEaseInOut], animations:
+        self.instructLabel = SKLabelNode(fontNamed: "Marker Felt")
+        if let instructLabel = self.instructLabel?.copy() as! SKLabelNode? {
             
-            {
-                
-                self.label.alpha = 0
-                
-        }, completion: nil)
-        
-        
-        
-        self.view?.addSubview(label)
+            instructLabel.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+            instructLabel.zPosition = 10000
+            instructLabel.color = UIColor.black
+            instructLabel.text = "Feed the children!"
+            
+            addChild(instructLabel)
+            
+            instructLabel.run(SKAction.sequence([SKAction.wait(forDuration: 1), SKAction.fadeOut(withDuration: 0.5)]))
+            
+        }
         
         
         
