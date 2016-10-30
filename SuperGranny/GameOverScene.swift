@@ -22,7 +22,11 @@ import SpriteKit
 
 class GameOverScene: SKScene {
     
-    private var cat : SKSpriteNode?
+    private var BG : SKSpriteNode?
+    
+    private var Granny : SKSpriteNode?
+    
+    
     
     init(size: CGSize, won:Bool) {
         
@@ -30,17 +34,67 @@ class GameOverScene: SKScene {
         
         super.init(size: size)
         
-        self.cat = SKSpriteNode (imageNamed: "catart")
-        
-        if let cat = self.cat?.copy() as! SKSpriteNode? {
+        if(won==true)
             
+        {
             
-            
-            cat.position = CGPoint(x: 145, y: 500)
-            
-            addChild(cat)
+            self.BG = SKSpriteNode (imageNamed: "winScreen")
             
         }
+            
+        else
+            
+        {
+            
+            self.BG = SKSpriteNode (imageNamed: "loseScreen")
+            
+        }
+        
+        if let BG = self.BG?.copy() as! SKSpriteNode? {
+            
+            
+            
+            BG.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+            
+            BG.setScale(0.5)
+            
+            BG.zPosition=20;
+            
+            addChild(BG)
+            
+            
+            
+        }
+        
+        if(won)
+            
+        {
+            
+            self.Granny = SKSpriteNode (imageNamed: "grannySpriteHappy")
+            
+        }
+            
+        else
+            
+        {
+            
+            self.Granny=SKSpriteNode(imageNamed: "grannySpriteSad")
+            
+        }
+        
+        if let Granny = self.Granny?.copy() as! SKSpriteNode? {
+            
+            
+            
+            Granny.position = CGPoint(x: self.frame.width/2, y: (size.height/2)-90)
+            
+            Granny.zPosition=45;
+            
+            addChild(Granny)
+            
+        }
+        
+        
         
         // 1
         
@@ -52,13 +106,13 @@ class GameOverScene: SKScene {
         
         let message = won ? "You won! :D" : "You lose :("
         
-        let entry="Hehe, child"
+        let entry="Hehe, child."
         
         
         
         // 3
         
-        let label2=SKLabelNode(fontNamed: "IHATCS__")
+        let label2=SKLabelNode(fontNamed: "Snell Roundhand")
         
         label2.text=entry
         
@@ -66,19 +120,23 @@ class GameOverScene: SKScene {
         
         label2.fontColor=SKColor.black
         
-        label2.position=CGPoint(x:5, y:750)
+        label2.position=CGPoint(x:size.width/2, y:420)
+        
+        label2.zPosition=50;
         
         addChild(label2)
         
-        let label = SKLabelNode(fontNamed: "IHATCS__")
+        let label = SKLabelNode(fontNamed: "Marker Felt")
         
         label.text = message
+        
+        label.zPosition=50;
         
         label.fontSize = 25
         
         label.fontColor = SKColor.black
         
-        label.position = CGPoint(x: size.width/2, y: size.height/2)
+        label.position = CGPoint(x: size.width/2, y: 390)
         
         addChild(label)
         
@@ -88,7 +146,7 @@ class GameOverScene: SKScene {
         
         run(SKAction.sequence([
             
-            SKAction.wait(forDuration: 3.0),
+            SKAction.wait(forDuration: 5.0),
             
             SKAction.run() {
                 

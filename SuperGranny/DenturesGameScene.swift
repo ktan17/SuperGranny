@@ -84,6 +84,8 @@ class DenturesGameScene: SKScene {
         
         label.text = "Find the dentures!"
         
+        label.layer.zPosition = 70
+        
         self.label.font = UIFont(name: "HelveticaNeue", size: 20)
         
         //self.label.alpha = 0;
@@ -128,6 +130,7 @@ class DenturesGameScene: SKScene {
         denture.size=CGSize(width: denture.size.width/2.3, height: denture.size.height/2.3)
         
         denture.name = "denture"
+        denture.zPosition = 50
         
         let randomVar=Int(arc4random_uniform(5) + 1);
         //let randomVar=3

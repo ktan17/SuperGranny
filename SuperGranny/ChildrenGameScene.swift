@@ -108,20 +108,24 @@ class ChildrenGameScene: SKScene {
         // init GreenHeatlh
         
         self.greenBar = SKSpriteNode (imageNamed: "greenHealth")
-            
+        
     }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if self.counter >= 50 {
+        let check = SKAction.run {
             
-            let scene = GameOverScene(size: (self.view?.frame.size)!, won: true)
-            let transition = SKTransition.reveal(with: SKTransitionDirection.down, duration: 1.0)
-            
-            scene.scaleMode = .aspectFill
-            
-            self.view?.presentScene(scene, transition: transition)
+            if self.counter >= 50 {
+                
+                let scene = GameOverScene(size: (self.view?.frame.size)!, won: true)
+                let transition = SKTransition.reveal(with: SKTransitionDirection.down, duration: 1.0)
+                
+                scene.scaleMode = .aspectFill
+                
+                self.view?.presentScene(scene, transition: transition)
+                
+            }
             
         }
         
@@ -153,7 +157,7 @@ class ChildrenGameScene: SKScene {
             n.zPosition = 50
             self.addChild(n)
             
-            n.run(SKAction.sequence([SKAction.move(to: CGPoint(x: self.frame.width / 2, y: 40), duration: 4), score, SKAction.removeFromParent()]))
+            n.run(SKAction.sequence([SKAction.move(to: CGPoint(x: self.frame.width / 2, y: 40), duration: 2), check, score, SKAction.removeFromParent()]))
             
         }
     }
