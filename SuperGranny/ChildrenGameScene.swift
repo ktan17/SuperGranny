@@ -13,6 +13,7 @@ class ChildrenGameScene: SKScene {
     private var BG : SKSpriteNode?
     private var Granny : SKSpriteNode?
     private var Cookie : SKSpriteNode?
+    private var Child : SKSpriteNode?
     
     override func didMove(to view: SKView) {
         
@@ -44,6 +45,69 @@ class ChildrenGameScene: SKScene {
         if let Cookie = self.Cookie {
             
             Cookie.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(M_PI), duration: 1)))
+            
+        }
+        
+        // init Child
+        
+        self.Child = SKSpriteNode (imageNamed: "kid1")
+        if let Child = self.Child {
+            
+            Child.position = CGPoint(x: self.frame.width / 2, y: -10)
+            Child.zPosition = 20
+            
+            let wait = SKAction.wait(forDuration: 2.5)
+            let run = SKAction.run {
+                
+                let randomNum = (arc4random_uniform(3) + 1)
+                
+                if (randomNum == 1) {
+                    
+                    let ChildAnimatedAtlas = SKTextureAtlas(named: "kid1Frames")
+                    var childFrames = [SKTexture]()
+                    
+                    childFrames.append(ChildAnimatedAtlas.textureNamed("kid1"))
+                    childFrames.append(ChildAnimatedAtlas.textureNamed("kid1f"))
+
+                    self.addChild(Child)
+                    
+                    Child.run(SKAction.repeatForever(SKAction.animate(with: childFrames, timePerFrame: 1, resize: false, restore: true)))
+                    
+                }
+                
+                else if (randomNum == 2) {
+                    
+                    let ChildAnimatedAtlas = SKTextureAtlas(named: "kid2Frames")
+                    var childFrames = [SKTexture]()
+                    
+                    childFrames.append(ChildAnimatedAtlas.textureNamed("kid2"))
+                    childFrames.append(ChildAnimatedAtlas.textureNamed("kid2f"))
+                    
+                    self.addChild(Child)
+                    
+                    Child.run(SKAction.repeatForever(SKAction.animate(with: childFrames, timePerFrame: 1, resize: false, restore: true)))
+                    
+                }
+                
+                else {
+                    
+                    let ChildAnimatedAtlas = SKTextureAtlas(named: "kid3Frames")
+                    var childFrames = [SKTexture]()
+                    
+                    childFrames.append(ChildAnimatedAtlas.textureNamed("kid3"))
+                    childFrames.append(ChildAnimatedAtlas.textureNamed("kid3f"))
+                    
+                    self.addChild(Child)
+                    
+                    Child.run(SKAction.repeatForever(SKAction.animate(with: childFrames, timePerFrame: 1, resize: false, restore: true)))
+                    
+                }
+                
+                Child.run(SKAction.move(to: CGPoint(x: self.frame.width / 2, y: 550), duration: 6))
+                
+            }
+            
+            Child.run(SKAction.repeatForever(SKAction.sequence([wait, run])))
             
         }
         
