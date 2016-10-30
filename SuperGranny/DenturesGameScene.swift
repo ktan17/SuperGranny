@@ -75,8 +75,8 @@ class DenturesGameScene: SKScene {
             
             instructLabel.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
             instructLabel.zPosition = 10000
-            instructLabel.color = UIColor.black
-            instructLabel.text = "Feed the children!"
+            instructLabel.fontColor = UIColor.black
+            instructLabel.text = "Find the dentures!"
             
             addChild(instructLabel)
             
