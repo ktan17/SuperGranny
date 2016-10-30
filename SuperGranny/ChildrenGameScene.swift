@@ -10,6 +10,7 @@ import GameplayKit
 
 class ChildrenGameScene: SKScene {
     
+    private var BG : SKSpriteNode?
     private var Granny : SKSpriteNode?
     private var Rock : SKShapeNode?
     
@@ -17,7 +18,18 @@ class ChildrenGameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        // init playButton
+        // init BG
+        
+        self.BG = SKSpriteNode (imageNamed: "rockThrowBG")
+        if let BG = self.BG?.copy() as! SKSpriteNode? {
+            
+            BG.size = CGSize(width: self.frame.width, height: self.frame.height)
+            BG.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+            addChild(BG)
+            
+        }
+        
+        // init Granny
         
         self.Granny = SKSpriteNode (imageNamed: "grannySprite")
         if let Granny = self.Granny?.copy() as! SKSpriteNode? {
@@ -48,8 +60,9 @@ class ChildrenGameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if let n = self.Rock?.copy() as! SKShapeNode? {
-            n.position = CGPoint(x: self.frame.width / 2, y: 700)
+            n.position = CGPoint(x: self.frame.width / 2, y: 550)
             n.strokeColor = SKColor.green
+            n.zPosition = 100
             self.addChild(n)
             
             n.run(SKAction.move(to: CGPoint(x: self.frame.width / 2, y: 0), duration: 4))

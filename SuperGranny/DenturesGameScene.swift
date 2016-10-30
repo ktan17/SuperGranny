@@ -18,17 +18,7 @@ import Foundation
 
 import SpriteKit
 
-class TouchableSpriteNode : SKSpriteNode
-    
-{
-    
-    func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        
-        print("touched")
-        
-    }
-    
-}
+
 
 class DenturesGameScene: SKScene {
     
@@ -37,6 +27,48 @@ class DenturesGameScene: SKScene {
     private var BGD : SKSpriteNode?
     
     let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        for touch in touches {
+            
+            let location = touch.location(in: self)           // 1
+            
+            
+            
+            if let button = atPoint(location) as? SKSpriteNode {        // 2
+                
+                
+                
+                if button.name == "denture" {
+                    
+                    
+                    
+                    let scene = ChildrenGameScene(size: (self.view?.frame.size)!)
+                    
+                    let transition = SKTransition.reveal(with: SKTransitionDirection.down, duration: 1.0)
+                    
+                    
+                    
+                    scene.scaleMode = .aspectFill
+                    
+                    
+                    
+                    self.view?.presentScene(scene, transition: transition)
+                    
+                    
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    
+    
+    
     
     
     
@@ -48,7 +80,7 @@ class DenturesGameScene: SKScene {
         
         
         
-        label.center = CGPoint(x: 160, y: 285)
+        label.center = CGPoint(x: 160, y: 900)
         
         label.textAlignment = .center
         
@@ -96,7 +128,7 @@ class DenturesGameScene: SKScene {
         
         let denture = SKSpriteNode(imageNamed: "denture")
         
-        denture.name = "Dentures"
+        denture.name = "denture"
         
         let randomVar=Int(arc4random_uniform(5) + 1);
         
@@ -104,31 +136,31 @@ class DenturesGameScene: SKScene {
             
         case 1:
             
-            denture.position = CGPoint(x: 365, y: 1081-130);
+            denture.position = CGPoint(x: 362, y: (1081-130));
             
             break;
             
         case 2:
             
-            denture.position = CGPoint(x: 142, y: 1081-247);
+            denture.position = CGPoint(x: 142, y: (1081-247));
             
             break;
             
         case 3:
             
-            denture.position = CGPoint(x: 10, y: 1081-344);
+            denture.position = CGPoint(x: 10, y: (1081-344));
             
             break;
             
         case 4:
             
-            denture.position = CGPoint(x: 343, y: 1081-465);
+            denture.position = CGPoint(x: 343, y: (1081-465));
             
             break;
             
         case 5:
             
-            denture.position = CGPoint(x: 121, y: 1081-1054);
+            denture.position = CGPoint(x: 121, y: (1081-1054));
             
             break;
             
@@ -150,40 +182,45 @@ class DenturesGameScene: SKScene {
         
         addChild(denture)
         
-        func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-            
-            
-            
-            for touch in touches {
-                
-                
-                
-                let location = touch.location(in: self)
-                
-                let nodes = self.nodes(at: location)
-                
-                
-                
-                for node in nodes
-                    
-                {
-                    
-                    if (node.name=="Dentures")
-                        
-                    {
-                        
-                        NSLog("Touch a SKNodeDerivedNode")
-                        
-                        break
-                        
-                        
-                    }
-                    
-                }
-                
-            }
-            
-        }
+        
+        
+        
+        
+        
+        
+        /*func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+         
+         
+         
+         for touch in touches {
+         
+         
+         
+         let location = touch.location(in: self)
+         
+         let nodes = self.nodes(at: location)
+         
+         
+         
+         for node in nodes
+         
+         {
+         
+         if (node.name=="Dentures")
+         
+         {
+         
+         NSLog("Touch a SKNodeDerivedNode")
+         
+         break
+         
+         }
+         
+         }
+         
+         }
+         
+         }*/
         
         
         
@@ -226,5 +263,7 @@ class DenturesGameScene: SKScene {
         
         
     }
+    
+    
     
 }
