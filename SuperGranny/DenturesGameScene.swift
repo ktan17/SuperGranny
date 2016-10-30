@@ -84,7 +84,7 @@ class DenturesGameScene: SKScene {
         
         label.text = "Find the dentures!"
         
-        label.layer.zPosition = 70
+        label.layer.zPosition = 100
         
         self.label.font = UIFont(name: "HelveticaNeue", size: 20)
         

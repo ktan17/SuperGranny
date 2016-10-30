@@ -20,6 +20,8 @@ class ChildrenGameScene: SKScene {
     private var redBar : SKSpriteNode?
     private var greenBar : SKSpriteNode?
     
+    private var instructLabel : SKLabelNode?
+    
     var counter = 0
     
     override func didMove(to view: SKView) {
@@ -33,6 +35,21 @@ class ChildrenGameScene: SKScene {
             BG.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
             BG.zPosition = 0
             addChild(BG)
+            
+        }
+        
+        // init Label
+        
+        self.instructLabel = SKLabelNode(fontNamed: "Marker Felt")
+        if let instructLabel = self.instructLabel?.copy() as! SKLabelNode? {
+            
+            instructLabel.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+            instructLabel.zPosition = 10000
+            instructLabel.text = "Feed the children!"
+            
+            addChild(instructLabel)
+            
+            instructLabel.run(SKAction.sequence([SKAction.wait(forDuration: 1), SKAction.fadeOut(withDuration: 0.5)]))
             
         }
         
