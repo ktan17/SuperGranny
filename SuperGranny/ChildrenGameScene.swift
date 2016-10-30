@@ -144,8 +144,6 @@ class ChildrenGameScene: SKScene {
                     greenBar.position = CGPoint(x: (self.size.width / 2) - 60 + 0.5 * greenBar.size.width, y: 140)
                     greenBar.zPosition = 1000;
                     
-                    print (greenBar.size)
-                    
                     self.addChild(greenBar)
                     
                 }
